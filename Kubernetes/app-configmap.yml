@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: ingress-nginx
+  name: mysql-configmap
+data:
+  MYSQL_DATABASE_USER: "root"
+  MYSQL_DATABASE_PASSWORD: "root"
+  MYSQL_DATABASE_DB: "BucketList"
+  MYSQL_DATABASE_HOST: "db-service"

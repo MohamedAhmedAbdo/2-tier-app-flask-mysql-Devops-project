@@ -1,0 +1,119 @@
+---
+- hosts: all 
+  become: true
+  become_user: root
+  tasks:
+  - name: Install Java
+    apt:
+      name: openjdk-11-jdk
+      update_cache: true
+
+  - name: Add Jenkins repository key
+    apt_key:
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+
+  - name: Add Jenkins repository
+    apt_repository:
+      repo: deb https://pkg.jenkins.io/debian-stable binary/
+      state: present
+
+  - name: Install Jenkins
+    apt:
+      name: jenkins
+      update_cache: true
+
+  - name: Start Jenkins service
+    service:
+      name: jenkins
+      state: started
+
+  - name: Install Python PIP
+    apt: pkg=python3-pip state=latest
+
+  - name: Install AWS CLI
+    pip: name=awscli state=latest
+
+  - name: AWS | Assures dir exists
+    file: path="~/.aws" state=directory
+
+  - name: Restart Jenkins service
+    service:
+      name: jenkins
+      state: restarted
+
+  - name: Install aptitude
+    apt:
+      name: aptitude
+      state: latest
+      update_cache: true
+
+  - name: Install required system packages
+    apt:
+      pkg:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+        - python3-pip
+        - virtualenv
+        - python3-setuptools
+        - gnupg2
+      state: latest
+      update_cache: true
+
+  - name: Add Docker GPG apt Key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Add Docker Repository
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
+      state: present
+
+  - name: Update apt packages
+    apt:
+      update_cache: yes
+      state: latest
+
+  - name: Update apt and install docker-ce
+    apt:
+      name: ['docker-ce', 'docker-ce-cli', 'containerd.io']
+      state: latest
+      update_cache: true
+
+  - name: Add remote "ubuntu" user to "docker" group
+    user:
+      name: "ubuntu"
+      groups: ["docker"]
+      append: yes
+    tags:
+      - docker
+
+  - name: open docker.sock to everyone
+    file:
+      path: /var/run/docker.sock
+      mode: '777'
+
+  - name: Allow port range 5000-9000
+    ufw:
+      rule: allow
+      port: 5000:9000
+      proto: tcp
+
+  - name: Download the Google Cloud public signing key
+    shell: curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+  - name: Add the Kubernetes apt repository
+    shell: echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+  - name: Apt update
+    apt:
+      update_cache: yes
+
+  - name: Install kubectl
+    apt:
+      name:
+        - kubectl
+
+  

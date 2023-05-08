@@ -1,0 +1,17 @@
+services:
+  app:
+    build: ./flaskapp/
+    command: sh -c "sleep 10s ; python3 ./app.py"
+    depends_on:
+      - mysql
+    ports:
+      - "5002:5002"
+
+  mysql:
+    build: ./mysql/
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'

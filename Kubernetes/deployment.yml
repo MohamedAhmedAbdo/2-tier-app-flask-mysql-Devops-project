@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ingress-nginx
+  name: flask-deployment
+  labels:
+    app: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: flask-app
+        image: 309705700864.dkr.ecr.us-east-1.amazonaws.com/flask_ecr:latest
+        envFrom:
+          - configMapRef:
+             name: mysql-configmap
+               #- secretRef:
+            #name: mysql-secret
+        ports:
+        - containerPort: 5002
+        readinessProbe:
+          tcpSocket:
+            port: 5002
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 5002
+          initialDelaySeconds: 15
+          periodSeconds: 20
+
