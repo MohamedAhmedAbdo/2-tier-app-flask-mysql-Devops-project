@@ -1,4 +1,4 @@
-### 2-Tier App Deployment with CI/CD
+# 2-Tier App Deployment with CI/CD
 ## Overview
 This project focuses on the deployment of a 2-tier application on AWS infrastructure using Terraform, Ansible, and Jenkins. The application consists of a Flask web server and a MySQL database. The infrastructure includes an EKS cluster, full network setup, and an ECR repository. The CI/CD pipeline is built with Jenkins to automate the deployment process.
 
@@ -10,14 +10,14 @@ This project focuses on the deployment of a 2-tier application on AWS infrastruc
 ## Installation and Setup
 Follow the steps below to set up and deploy the application:
 
-# 1. Building Infrastructure with Terraform
+### 1. Building Infrastructure with Terraform
 
 1. Navigate to the Terraform directory.
 2. Run "terraform init" to initialize Terraform.
 3. Execute "terraform apply" to create the infrastructure components.
 4. Copy the key.pem file to the ansible directory.
 
-# 2. Installing and Configuring Jenkins with Ansible
+### 2. Installing and Configuring Jenkins with Ansible
 1. Navigate to the Terraform directory and give key file read permission   .
 ```bash
 cd /ansible
@@ -30,7 +30,7 @@ chmod 400 key.pem
 ```bash
 ansible-playbook -i 'instance public ip' -u ubuntu --private-key ./key.pem playbook.yaml
 ```
-# 3. Manual Configuration Steps
+### 3. Manual Configuration Steps
 1. Connect to the EC2 instance where Jenkins is installed.
 2. Retrieve the initial admin password:
 ```bash
@@ -44,7 +44,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 8. Configure the pipeline by selecting the GitHub project and providing the repository URL.
 9. Build the pipeline script from SCM, specifying the Jenkinsfile in the Git repository.
 10. Get the DNS name of load balancer and put it in the browser
-<img src=https://github.com/MohamedAhmedAbdo/2-tier-app-flask---MySql---Devops-project/blob/main/Diagrams/project-diagram%20.png>
+<https://github.com/MohamedAhmedAbdo/2-tier-app-flask---MySql---Devops-project/blob/main/Diagrams/Bucket%20List.png>
 
 ## Usage
 1. Once the pipeline is set up, Jenkins will automatically trigger the deployment process whenever there is a new commit to the repository.
