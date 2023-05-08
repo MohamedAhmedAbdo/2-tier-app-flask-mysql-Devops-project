@@ -10,14 +10,14 @@ This project focuses on the deployment of a 2-tier application on AWS infrastruc
 ## Installation and Setup
 Follow the steps below to set up and deploy the application:
 
-### 1. Building Infrastructure with Terraform
+##### 1. Building Infrastructure with Terraform
 
 1. Navigate to the Terraform directory.
 2. Run "terraform init" to initialize Terraform.
 3. Execute "terraform apply" to create the infrastructure components.
 4. Copy the key.pem file to the ansible directory.
 
-### 2. Installing and Configuring Jenkins with Ansible
+##### 2. Installing and Configuring Jenkins with Ansible
 1. Navigate to the Terraform directory and give key file read permission   .
 ```bash
 cd /ansible
@@ -30,7 +30,7 @@ chmod 400 key.pem
 ```bash
 ansible-playbook -i 'instance public ip' -u ubuntu --private-key ./key.pem playbook.yaml
 ```
-### 3. Manual Configuration Steps
+##### 3. Manual Configuration Steps
 1. Connect to the EC2 instance where Jenkins is installed.
 2. Retrieve the initial admin password:
 ```bash
