@@ -44,7 +44,7 @@ ansible-playbook -i 'instance public ip' -u ubuntu --private-key ./key.pem playb
   8. Configure the pipeline by selecting the GitHub project and providing the repository URL.
   9. Build the pipeline script from SCM, specifying the Jenkinsfile in the Git repository.
   10. Get the DNS name of load balancer and put it in the browser
-  <https://github.com/MohamedAhmedAbdo/2-tier-app-flask---MySql---Devops-project/blob/main/Diagrams/Bucket%20List.png>
+  <img src=https://github.com/MohamedAhmedAbdo/2-tier-app-flask---MySql---Devops-project/blob/main/Diagrams/Bucket%20List.png>
 
 ## Usage
 1. Once the pipeline is set up, Jenkins will automatically trigger the deployment process whenever there is a new commit to the repository.
