@@ -1,4 +1,4 @@
-# 2-Tier App Deployment with CI/CD
+# 2-Tier App Deployment (complete CI/CD cycle) 
 ## Overview
 This project focuses on the deployment of a 2-tier application on AWS infrastructure using Terraform, Ansible, and Jenkins. The application consists of a Flask web server and a MySQL database. The infrastructure includes an EKS cluster, full network setup, and an ECR repository. The CI/CD pipeline is built with Jenkins to automate the deployment process.
 
