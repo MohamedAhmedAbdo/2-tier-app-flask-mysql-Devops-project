@@ -200,7 +200,7 @@ resource "tls_private_key" "rsa" {
 
 resource "local_file" "TF-key" {
   content  = tls_private_key.rsa.private_key_pem
-  filename = "terraform-tls-key.pem"
+  filename = "web-ec2-key.pem"
 }
 
 
