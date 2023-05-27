@@ -22,8 +22,8 @@ pipeline {
         stage('Build docker image for flaskapp and MySQL'){
             steps{
     
-                sh 'docker build -t 309705700864.dkr.ecr.us-east-1.amazonaws.com/flask_ecr:latest ./flask-db/flaskapp'
-                sh 'docker build -t 309705700864.dkr.ecr.us-east-1.amazonaws.com/sql_ecr:latest ./flask-db/mysql'       
+                sh 'docker build -t 309705700864.dkr.ecr.us-east-1.amazonaws.com/flask_ecr:latest ./flaskapp-database/flaskapp'
+                sh 'docker build -t 309705700864.dkr.ecr.us-east-1.amazonaws.com/sql_ecr:latest ./flaskapp-database/mysql'       
             }
         }        
         stage('Push docker image for flask app and MySQL'){
