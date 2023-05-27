@@ -15,7 +15,7 @@ Follow the steps below to set up and deploy the application:
 1. Navigate to the Terraform directory.
 2. Run "terraform init" to initialize Terraform.
 3. Execute "terraform apply" to create the infrastructure components.
-4. Copy the terraform-tls-key.pem file to the ansible directory.
+4. Copy the web-ec2-key.pem file to the ansible directory.
 
 #### 2. Installing and Configuring Jenkins with Ansible
 1. Navigate to the Terraform directory and give key file read permission   .
@@ -23,7 +23,7 @@ Follow the steps below to set up and deploy the application:
 cd /ansible
 ```
 ```bash
-chmod 400 terraform-tls-key.pem
+chmod 400 web-ec2-key.pem.pem
 ```
 2. Edit the inventory file and add the public IP of the EC2 instance.
 3. Run the Ansible playbook:
