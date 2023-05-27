@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('clone git repo'){
             steps{
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/MohamedaSaaeed/flaskapp-mysql']])
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/MohamedAhmedAbdo/flaskapp-database']])
             }
         }
         stage('ECR login'){
