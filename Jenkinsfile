@@ -51,7 +51,7 @@ pipeline {
                 }
             }
         }
-        stage('Install Controller') {
+        stage('Install Ingress Controller') {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
