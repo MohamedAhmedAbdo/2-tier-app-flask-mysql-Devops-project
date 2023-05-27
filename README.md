@@ -23,12 +23,12 @@ Follow the steps below to set up and deploy the application:
 cd /ansible
 ```
 ```bash
-chmod 400 web-ec2-key.pem.pem
+chmod 400 web-ec2-key.pem
 ```
 2. Edit the inventory file and add the public IP of the EC2 instance.
 3. Run the Ansible playbook:
 ```bash
-ansible-playbook -i 'instance public ip' -u ubuntu --private-key ./key.pem playbook.yaml
+ansible-playbook -i 'instance public ip' -u ubuntu --private-key ./web-ec2-key.pem playbook.yaml
 ```
 #### 3. Manual Configuration Steps
   1. Connect to the EC2 instance where Jenkins is installed.
